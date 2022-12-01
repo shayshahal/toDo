@@ -1,21 +1,40 @@
-#hover-menu-small
-{
-    position: fixed;
-    background-color: transparent;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    padding: .5vh .7vw;
-    background-color: red;
-    top: 0%;
-    left: 0%;
-    height: 100%;
-    width: 4vw;
-    transition: width .5s ease;
+#hover-menu-small {
+  position: fixed;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  top: 0%;
+  left: 0%;
+  height: 100%;
+  width: 4vw;
+  transition: width 0.1s ease-in-out;
+  z-index: 999;
 }
-#menu-icon
+#screen-cover
 {
-    font-size: 2vw;
-    transition: font-size .5s ease;
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 99;
+    background-color: black;
+    opacity: .6;
+    transition: opacity .1s ease;
+}
+
+#menu-icon {
+  padding: 0.5vh 0.7vw;
+  font-size: 2vw;
+  transition: font-size 0.5s ease;
+  user-select: none;
+}
+.menu-btn {
+  align-self: stretch;
+  background-color: rgba(0, 0, 0, 0.836);
+  color: white;
+  border-top: 1px solid white;
 }
