@@ -1,0 +1,21 @@
+#hover-menu-small
+{
+    position: fixed;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: .5vh .7vw;
+    background-color: red;
+    top: 0%;
+    left: 0%;
+    height: 100%;
+    width: 4vw;
+    transition: width .5s ease;
+}
+#menu-icon
+{
+    font-size: 2vw;
+    transition: font-size .5s ease;
+}
