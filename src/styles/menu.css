@@ -1,17 +1,64 @@
-#hover-menu-small {
+#top-menu 
+{
   position: fixed;
+  top: 0;
+  left: 0;
   background-color: transparent;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  top: 0%;
-  left: 0%;
-  height: 100%;
-  width: 4vw;
-  transition: width 0.1s ease-in-out;
-  z-index: 999;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+  height: 7vh;
+  background-color: red;
+  width: 100%;
+  padding: 0vh 1vw;
+  font-size: 4vh;
 }
+#left-menu
+{
+    position: fixed;
+    display: flex;
+    background-color: black;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    top: 0%;
+    left: 0%;
+    height: 100%;
+    color: white;
+    width: 12vw;
+    z-index: 999;
+}
+.slideIn
+{
+    animation: slideIn .2s ease-in-out;
+}
+@keyframes slideIn
+{
+    0%
+    {
+        transform: translateX(-100%);
+    }
+    100%
+    {
+        transform: translateX(0%);
+    }
+}
+.slideOut
+{
+    animation: slideOut .2s ease-in-out;
+}
+@keyframes slideOut
+{
+    0%
+    {
+        transform: translateX(0%);
+    }
+    100%
+    {
+        transform: translateX(-100%);
+    }
+} 
 #screen-cover
 {
     display: block;
@@ -21,20 +68,37 @@
     height: 100vh;
     width: 100vw;
     z-index: 99;
+    opacity: 60%;
     background-color: black;
-    opacity: .6;
-    transition: opacity .1s ease;
 }
+.opIn
+{
+    animation: opIn .2s ease-in-out;
+}
+@keyframes opIn 
+{
+    0% 
+    {
+        opacity: 0%;
+    }
+    100%
+    {
+        opacity: 60%;
+    }
+}
+.opOut
+{
+    animation: opOut .2s ease-in-out;
 
-#menu-icon {
-  padding: 0.5vh 0.7vw;
-  font-size: 2vw;
-  transition: font-size 0.5s ease;
-  user-select: none;
 }
-.menu-btn {
-  align-self: stretch;
-  background-color: rgba(0, 0, 0, 0.836);
-  color: white;
-  border-top: 1px solid white;
+@keyframes opOut
+{
+    0% 
+    {
+        opacity: 60%;
+    }
+    100%
+    {
+        opacity: 0%;
+    }
 }

@@ -3,45 +3,57 @@ import '/src/styles/menu.css';
 export default () =>
 {
     // Create small menu
-    const hoverMenu = document.createElement('div');
-    hoverMenu.id = 'hover-menu-small';
-    document.body.appendChild(hoverMenu);
+    const topMenu = createElement('div', 'top-menu','');
+    document.body.appendChild(topMenu);
 
-    // Screen cover
-    const screenCover = document.createElement('div');
-    screenCover.id = 'screen-cover';
+    const menuExpandButton = createElement('button', 'menu-expand-btn', '☰');
+    topMenu.appendChild(menuExpandButton);
 
-    // Add hover event
-    hoverMenu.addEventListener('mouseenter',(e) => expand(e, screenCover));
-    screenCover.addEventListener('click', (e) => retract(e, hoverMenu));
+    const leftMenu = createElement('div', 'left-menu','', '');
+    const menuRetractButton = createElement('button', 'menu-retract-btn', '☰');
+    leftMenu.appendChild(menuRetractButton);
 
-    createMenuIcon(hoverMenu);
-    createMyDayButton(hoverMenu);
+    const screenCover = createElement('div', 'screen-cover', '');
 
+    menuExpandButton.addEventListener('click',() => expand(leftMenu, screenCover));
+    screenCover.addEventListener('click', (e) => retractAnimation(leftMenu, e.target));
+    menuRetractButton.addEventListener('click', () => retractAnimation(leftMenu, screenCover));
+    leftMenu.addEventListener('animationend', function(e)
+    {
+        console.log(e.animationName)
+        if(e.animationName === 'slideOut')
+            retract(screenCover, leftMenu);
+    });
 }
-function expand(e, screenCover)
+
+function expand(leftMenu, screenCover)
 {
-    e.target.style.width = '12vw';
+    leftMenu.classList.add('slideIn');
+    document.body.appendChild(leftMenu);
+    screenCover.classList.add('opIn');
     document.body.appendChild(screenCover);
 }
-function retract(e, hoverMenu)
+function retractAnimation(leftMenu, screenCover)
 {
-    hoverMenu.style.width = '4vw';
-    document.body.removeChild(e.target);
+    leftMenu.classList.remove('slideIn');
+    leftMenu.classList.add('slideOut');
+    screenCover.classList.remove('opIn');
+    screenCover.classList.add('opOut');
+}
+function retract(screenCover, leftMenu)
+{
+    leftMenu.classList.remove('slideOut');
+    document.body.removeChild(leftMenu);
+    screenCover.classList.remove('opOut');
+    document.body.removeChild(screenCover);
 }
 
-function createMenuIcon(parent)
+function createElement(eType, id, textContent, className = false)
 {
-    const menuIcon = document.createElement('div');
-    menuIcon.id = 'menu-icon';
-    parent.appendChild(menuIcon);
-} 
-
-function createMyDayButton(parent)
-{
-    const myDay = document.createElement('button');
-    myDay.textContent = 'My Day';
-    myDay.id = 'myday-btn';
-    myDay.classList.add('menu-btn');
-    parent.appendChild(myDay);
+    const element = document.createElement(eType);
+    element.textContent = textContent;
+    element.id = id;
+    if(className)
+        element.classList.add(className);
+    return element;
 }
