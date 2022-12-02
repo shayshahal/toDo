@@ -2,17 +2,26 @@ import '/src/styles/menu.css';
 
 export default () =>
 {
-    // Create small menu
+    //--------------------------Create top menu --------------------------------------
     const topMenu = createElement('div', 'top-menu','');
     document.body.appendChild(topMenu);
-
+    // Create Menu expending button
     const menuExpandButton = createElement('button', 'menu-expand-btn', '☰');
     topMenu.appendChild(menuExpandButton);
 
-    const leftMenu = createElement('div', 'left-menu','', '');
-    const menuRetractButton = createElement('button', 'menu-retract-btn', '☰');
-    leftMenu.appendChild(menuRetractButton);
 
+    //--------------------------Create left menu --------------------------------------
+    const leftMenu = createElement('div', 'left-menu','', '');
+    // Horizontal div for menu button and name
+    const topDivLeftMenu = createElement('div', 'top-div-left-menu','');
+    leftMenu.appendChild(topDivLeftMenu);
+    // Menu retract button
+    const menuRetractButton = createElement('button', 'menu-retract-btn', '☰');
+    topDivLeftMenu.appendChild(menuRetractButton);
+    // Name of site
+    const siteName = createElement('p', 'menu-site-name', 'Welcome to ToDo');
+    topDivLeftMenu.appendChild(siteName);
+    // Create screen cover for rest of main screen when menu is open
     const screenCover = createElement('div', 'screen-cover', '');
 
     menuExpandButton.addEventListener('click',() => expand(leftMenu, screenCover));

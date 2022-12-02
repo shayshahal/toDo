@@ -1,3 +1,4 @@
+/*-------------------------Header---------------------------------*/
 #top-menu 
 {
   position: fixed;
@@ -7,13 +8,14 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: stretch;
-  height: 7vh;
+  align-items: center;
+  height: 6vh;
   background-color: red;
   width: 100%;
   padding: 0vh 1vw;
-  font-size: 4vh;
+  font-size: 2vmax;
 }
+/*-------------------------Sliding Menu---------------------------------*/
 #left-menu
 {
     position: fixed;
@@ -21,14 +23,46 @@
     background-color: black;
     flex-direction: column;
     justify-content: flex-start;
-    align-items: center;
+    align-items: stretch;
     top: 0%;
     left: 0%;
     height: 100%;
     color: white;
     width: 12vw;
     z-index: 999;
+    box-shadow: 0 3px 5px black;
 }
+#top-div-left-menu
+{
+    height: 6vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1vw;
+}
+#menu-retract-btn
+{
+    font-size: 2vmax;
+}
+#menu-site-name
+{
+    font-size: 1vmax;
+}
+#screen-cover
+{
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 99;
+    opacity: 60%;
+    background-color: black;
+}
+
+/* Animations */
 .slideIn
 {
     animation: slideIn .2s ease-in-out;
@@ -59,18 +93,6 @@
         transform: translateX(-100%);
     }
 } 
-#screen-cover
-{
-    display: block;
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    width: 100vw;
-    z-index: 99;
-    opacity: 60%;
-    background-color: black;
-}
 .opIn
 {
     animation: opIn .2s ease-in-out;
