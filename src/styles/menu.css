@@ -13,7 +13,7 @@
   background-color: red;
   width: 100%;
   padding: 0vh 1vw;
-  font-size: 2vmax;
+  font-size: 3vmin;
 }
 /*-------------------------Sliding Menu---------------------------------*/
 #left-menu
@@ -43,11 +43,11 @@
 }
 #menu-retract-btn
 {
-    font-size: 2vmax;
+    font-size: 3vmin;
 }
 #menu-site-name
 {
-    font-size: 1vmax;
+    font-size: 2vmin;
 }
 #screen-cover
 {
