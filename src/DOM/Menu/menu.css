@@ -49,6 +49,15 @@
 {
     font-size: 2vmin;
 }
+.menu-btn
+{
+    border-top: .1vh solid rgba(255, 255, 255, 0.5);
+    border-bottom: .1vh solid rgba(255, 255, 255, 0.5);
+    padding: 1vh;
+    font-size: 3vmin;
+}
+
+
 #screen-cover
 {
     display: block;

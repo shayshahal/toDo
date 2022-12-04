@@ -23,11 +23,19 @@ export default () =>
     topDivLeftMenu.appendChild(menuRetractButton);
 
     // Name of site
-    const siteName = createElement('p', 'menu-site-name', 'Welcome to To-Do');
+    const siteName = createElement('p', 'menu-site-name', 'ToDo');
     topDivLeftMenu.appendChild(siteName);
 
     // Create screen cover for rest of main screen when menu is open
     const screenCover = createElement('div', 'screen-cover', '');
+
+    // Create button to go to current day tasks
+    const dailyBtn = createElement('button', 'dly-btn', 'My Day', 'menu-btn')
+    leftMenu.appendChild(dailyBtn);
+
+    // Create button to go to current day tasks
+    const listsBtn = createElement('button', 'list-btn', '^ My Lists', 'menu-btn')
+    leftMenu.appendChild(listsBtn);
 
     //--------------------------EventListeners --------------------------------------//
     // Expand button
