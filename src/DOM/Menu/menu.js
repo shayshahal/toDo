@@ -1,4 +1,5 @@
 import './menu.css';
+import createElement from '/src/DOM/elementCreator.js';
 
 export default () =>
 {
@@ -70,12 +71,3 @@ function retract(screenCover, leftMenu)
     document.body.removeChild(screenCover);
 }
 
-function createElement(eType, id, textContent, className = false)
-{
-    const element = document.createElement(eType);
-    element.textContent = textContent;
-    element.id = id;
-    if(className)
-        element.classList.add(className);
-    return element;
-}
