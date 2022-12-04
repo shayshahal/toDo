@@ -36,6 +36,8 @@ export default () =>
     // Create button to go to current day tasks
     const listsBtn = createElement('button', 'list-btn', 'My Lists', 'menu-btn');
     leftMenu.appendChild(listsBtn);
+    
+    const listDiv = createListDiv();
 
     // Create button to go to current day tasks
     const allBtn = createElement('button', 'all-btn', 'All tasks', 'menu-btn');
@@ -43,43 +45,58 @@ export default () =>
 
     //--------------------------EventListeners --------------------------------------//
     // Expand button
-    menuExpandButton.addEventListener('click',() => expand(leftMenu, screenCover));
+    menuExpandButton.addEventListener('click',() => 
+    {
+        expandWithAni(leftMenu, 'slideIn');
+        expandWithAni(screenCover, 'opIn');
+    });
 
     // Animations
-    screenCover.addEventListener('click', (e) => retractAnimation(leftMenu, e.target));
-    menuRetractButton.addEventListener('click', () => retractAnimation(leftMenu, screenCover));
+    screenCover.addEventListener('click', (e) => 
+    {
+        retractAnimation(e.target, 'opOut');
+        retractAnimation(leftMenu, 'slideLeft');
+    });
+    menuExpandButton.addEventListener('click', () => 
+    {
+        retractAnimation(screenCover, 'opOut');
+        retractAnimation(leftMenu, 'slideLeft');
+    });
 
     // Extract after animation
-    leftMenu.addEventListener('animationend', function(e)
+    leftMenu.addEventListener('animationend', (e) =>
     {
-        // Check if animation is out
-        if(e.animationName === 'slideOut')
-            retract(screenCover, leftMenu);
+        removeAfterAni(e, 'slideLeft');
+        removeAfterAni(screenCover, 'slideLeft');
     });
+    listDiv.addEventListener('animationend', (e) => removeAfterAni(e, 'slideUp'));
 }
 
-function expand(leftMenu, screenCover)
+function expandWithAni(element, ani)
 {
-    leftMenu.classList.add('slideIn');
-    document.body.appendChild(leftMenu);
-    screenCover.classList.add('opIn');
-    document.body.appendChild(screenCover);
+    element.classList.add(ani);
+    document.body.appendChild(element);
 }
 
-
-function retractAnimation(leftMenu, screenCover)
+function retractAnimation(element, aniName)
 {
-    leftMenu.classList.remove('slideIn');
-    leftMenu.classList.add('slideOut');
-    screenCover.classList.remove('opIn');
-    screenCover.classList.add('opOut');
+    var classList = element.classList;
+    while (classList.length > 0) {
+       classList.remove(classList.item(0));
+    }
+    element.classList.add(aniName);
 }
 
-function retract(screenCover, leftMenu)
+function removeAfterAni(element, ani)
 {
-    leftMenu.classList.remove('slideOut');
-    document.body.removeChild(leftMenu);
-    screenCover.classList.remove('opOut');
-    document.body.removeChild(screenCover);
+    if(element.animationName !== aniName)
+        return false;
+    element.classList.remove(ani);
+    document.body.removeChild(element);
 }
 
+function createListDiv()
+{
+    const container = createElement('div','lists-container', '');
+    return container;
+}
