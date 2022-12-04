@@ -1,4 +1,4 @@
-import '/src/styles/menu.css';
+import './menu.css';
 
 export default () =>
 {
