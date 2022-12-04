@@ -23,8 +23,8 @@ export default () =>
     topDivLeftMenu.appendChild(menuRetractButton);
 
     // Name of site
-    const siteName = createElement('p', 'menu-site-name', 'ToDo');
-    topDivLeftMenu.appendChild(siteName);
+    const credit = createElement('p', 'menu-site-name', '©Shay Shahal');
+    topDivLeftMenu.appendChild(credit);
 
     // Create screen cover for rest of main screen when menu is open
     const screenCover = createElement('div', 'screen-cover', '');

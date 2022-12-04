@@ -6,6 +6,7 @@
     flex-direction: column;
     justify-content: center;
     align-items:center;
+    
 }
 #welcome
 {
@@ -21,6 +22,7 @@
 {
     padding: 1vh;
     font-size: 3vh;
+    color: linear-gradient(90deg, black 0%, white 100%);
     animation: entrance3 2s cubic-bezier(0,1,.5,1);
 }
 /*************************ANIMATIONS***************************/
