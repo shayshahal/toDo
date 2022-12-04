@@ -30,12 +30,16 @@ export default () =>
     const screenCover = createElement('div', 'screen-cover', '');
 
     // Create button to go to current day tasks
-    const dailyBtn = createElement('button', 'dly-btn', 'My Day', 'menu-btn')
+    const dailyBtn = createElement('button', 'dly-btn', 'My Day', 'menu-btn');
     leftMenu.appendChild(dailyBtn);
 
     // Create button to go to current day tasks
-    const listsBtn = createElement('button', 'list-btn', '^ My Lists', 'menu-btn')
+    const listsBtn = createElement('button', 'list-btn', 'My Lists', 'menu-btn');
     leftMenu.appendChild(listsBtn);
+
+    // Create button to go to current day tasks
+    const allBtn = createElement('button', 'all-btn', 'All tasks', 'menu-btn');
+    leftMenu.appendChild(allBtn);
 
     //--------------------------EventListeners --------------------------------------//
     // Expand button

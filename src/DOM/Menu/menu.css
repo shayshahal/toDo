@@ -28,7 +28,7 @@
     left: 0%;
     height: 100%;
     color: white;
-    width: 12vw;
+    width: 15vw;
     z-index: 999;
     box-shadow: 0 3px 5px black;
 }
@@ -53,10 +53,9 @@
 {
     border-top: .1vh solid rgba(255, 255, 255, 0.5);
     border-bottom: .1vh solid rgba(255, 255, 255, 0.5);
-    padding: 1vh;
-    font-size: 3vmin;
+    padding: 1.5vh 0vw;
+    font-size: 2.5vmin;
 }
-
 
 #screen-cover
 {
