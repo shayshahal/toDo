@@ -1,20 +1,14 @@
 /*-------------------------Header---------------------------------*/
-#top-menu 
+#expand-menu-btn
 {
   position: fixed;
   top: 0;
   left: 0;
-  background-color: transparent;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  height: 6vh;
+  border-radius: 50%;
   color: white;
-  width: 100%;
-  padding: 0vh 1vw;
-  font-size: 3vmin;
-  z-index: 99;
+  padding: 1vh 1vw;
+  font-size: 4vmin;
 }
 /*-------------------------Sliding Menu---------------------------------*/
 #left-menu
@@ -29,7 +23,7 @@
     left: 0%;
     height: 100%;
     color: white;
-    width: 15vw;
+    width: 12vw;
     z-index: 999;
     box-shadow: 0 3px 5px black;
 }
@@ -39,16 +33,38 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    gap: 1vw;
     align-items: center;
     padding: 0 1vw;
 }
-#menu-retract-btn
+#retract-menu-btn
 {
     font-size: 3vmin;
 }
-#menu-site-name
+#name-menu
 {
     font-size: 2vmin;
+}
+#list-btn-container
+{
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: space-evenly;
+}
+#lists-container
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    font-size: 1.5vmin;
+}
+.listItem
+{
+    border-top: .05vh solid rgba(0, 0, 0);
+    border-bottom: .05vh solid rgba(0, 0, 0, 0.5);
+    padding: 1vh 0vw;
 }
 .menu-btn
 {
@@ -57,7 +73,6 @@
     padding: 1.5vh 0vw;
     font-size: 2.5vmin;
 }
-
 #screen-cover
 {
     display: block;
@@ -72,11 +87,11 @@
 }
 
 /* Animations */
-.slideIn
+.slideRight
 {
-    animation: slideIn .2s ease-in-out;
+    animation: slideRight .2s ease-in-out;
 }
-@keyframes slideIn
+@keyframes slideRight
 {
     0%
     {
@@ -87,11 +102,11 @@
         transform: translateX(0%);
     }
 }
-.slideOut
+.slideLeft
 {
-    animation: slideOut .2s ease-in-out;
+    animation: slideLeft .2s ease-in-out;
 }
-@keyframes slideOut
+@keyframes slideLeft
 {
     0%
     {
@@ -100,6 +115,38 @@
     100%
     {
         transform: translateX(-100%);
+    }
+} 
+.slideDown
+{
+    animation: slideDown .2s ease-in-out;
+    transform-origin: top center;
+}
+@keyframes slideDown
+{
+    0%
+    {
+        transform: rotateX(90deg);
+    }
+    100%
+    {
+        transform: rotateX(0deg);
+    }
+} 
+.slideUp
+{
+    animation: slideUp .2s ease-in;
+    transform-origin: top center;
+}
+@keyframes slideUp
+{
+    0%
+    {
+        transform: rotateX(0deg);
+    }
+    100%
+    {
+        transform: rotateX(90deg);
     }
 } 
 .opIn

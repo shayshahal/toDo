@@ -3,13 +3,9 @@ import createElement from '/src/DOM/elementCreator.js';
 
 export default () =>
 {
-    //--------------------------Create top menu --------------------------------------//
-    const topMenu = createElement('div', 'top-menu','');
-    document.body.appendChild(topMenu);
-
     // Create Menu expending button
-    const menuExpandButton = createElement('button', 'menu-expand-btn', '☰');
-    topMenu.appendChild(menuExpandButton);
+    const expandMenuButton = createElement('button', 'expand-menu-btn', '☰');
+    document.body.appendChild(expandMenuButton);
 
     //--------------------------Create left menu --------------------------------------//
     const leftMenu = createElement('div', 'left-menu','', '');
@@ -19,11 +15,11 @@ export default () =>
     leftMenu.appendChild(topDivLeftMenu);
 
     // Menu retract button
-    const menuRetractButton = createElement('button', 'menu-retract-btn', '☰');
-    topDivLeftMenu.appendChild(menuRetractButton);
+    const retractMenuButton = createElement('button', 'retract-menu-btn', '☰');
+    topDivLeftMenu.appendChild(retractMenuButton);
 
     // Name of site
-    const credit = createElement('p', 'menu-site-name', '©Shay Shahal');
+    const credit = createElement('div', 'name-menu', '©Shay Shahal');
     topDivLeftMenu.appendChild(credit);
 
     // Create screen cover for rest of main screen when menu is open
@@ -34,9 +30,11 @@ export default () =>
     leftMenu.appendChild(dailyBtn);
 
     // Create button to go to current day tasks
+    const listContainer = createElement('div', 'list-btn-container', '');
+    leftMenu.appendChild(listContainer);
     const listsBtn = createElement('button', 'list-btn', 'My Lists', 'menu-btn');
-    leftMenu.appendChild(listsBtn);
-    
+    listContainer.appendChild(listsBtn);
+    let isOpen = false;
     const listDiv = createListDiv();
 
     // Create button to go to current day tasks
@@ -45,58 +43,79 @@ export default () =>
 
     //--------------------------EventListeners --------------------------------------//
     // Expand button
-    menuExpandButton.addEventListener('click',() => 
+    expandMenuButton.addEventListener('click',() => 
     {
-        expandWithAni(leftMenu, 'slideIn');
-        expandWithAni(screenCover, 'opIn');
+        expandWithAni(document.body, leftMenu, 'slideRight');
+        expandWithAni(document.body, screenCover, 'opIn');
+        expandMenuButton.textContent = '';
     });
 
     // Animations
     screenCover.addEventListener('click', (e) => 
     {
+        retractAnimation(leftMenu, 'slideLeft');
         retractAnimation(e.target, 'opOut');
-        retractAnimation(leftMenu, 'slideLeft');
     });
-    menuExpandButton.addEventListener('click', () => 
+    retractMenuButton.addEventListener('click', () => 
     {
-        retractAnimation(screenCover, 'opOut');
         retractAnimation(leftMenu, 'slideLeft');
+        retractAnimation(screenCover, 'opOut');
     });
 
     // Extract after animation
     leftMenu.addEventListener('animationend', (e) =>
     {
-        removeAfterAni(e, 'slideLeft');
-        removeAfterAni(screenCover, 'slideLeft');
+        if(e.animationName === 'slideLeft')
+        {
+            removeAfterAni(document.body, e.target, 'slideLeft');
+            removeAfterAni(document.body, screenCover, 'opOut');
+            expandMenuButton.textContent = '☰';
+        }
     });
-    listDiv.addEventListener('animationend', (e) => removeAfterAni(e, 'slideUp'));
+
+    listsBtn.addEventListener('click', () => 
+    {
+        isOpen ? retractAnimation(listDiv, 'slideUp') : expandWithAni(listContainer, listDiv, 'slideDown');
+        isOpen = !isOpen;
+        console.log(isOpen);
+    });
+    listDiv.addEventListener('animationend', (e) => 
+    {
+        if(e.animationName === 'slideUp')
+        {
+            removeAfterAni(listContainer, e.target, 'slideUp');
+        }
+    } );
 }
 
-function expandWithAni(element, ani)
+function expandWithAni(parent, element, ani)
 {
-    element.classList.add(ani);
-    document.body.appendChild(element);
+    element.classList.toggle(ani);
+    parent.appendChild(element);
 }
 
-function retractAnimation(element, aniName)
+function retractAnimation(element, ani)
 {
     var classList = element.classList;
     while (classList.length > 0) {
        classList.remove(classList.item(0));
     }
-    element.classList.add(aniName);
+    element.classList.add(ani);
 }
 
-function removeAfterAni(element, ani)
+function removeAfterAni(parent, element, ani)
 {
-    if(element.animationName !== aniName)
-        return false;
     element.classList.remove(ani);
-    document.body.removeChild(element);
+    parent.removeChild(element);
 }
 
 function createListDiv()
 {
     const container = createElement('div','lists-container', '');
+    for (let i = 0; i < 5; i++) 
+    {
+        const list = createElement('button', 'list-item' + i, 'List ' + i, 'listItem')
+        container.appendChild(list);
+    }
     return container;
 }
