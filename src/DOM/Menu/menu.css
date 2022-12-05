@@ -50,7 +50,8 @@
     display: flex;
     flex-direction: column;
     align-items: stretch;
-    justify-content: space-evenly;
+    justify-content: flex-start;
+    border-bottom: .05vh solid rgba(0, 0, 0, 0.5);
 }
 #lists-container
 {
@@ -119,7 +120,7 @@
 } 
 .slideDown
 {
-    animation: slideDown .2s ease-in-out;
+    animation: slideDown .2s ease-in;
     transform-origin: top center;
 }
 @keyframes slideDown

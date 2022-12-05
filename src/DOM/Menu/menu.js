@@ -30,16 +30,16 @@ export default () =>
     leftMenu.appendChild(dailyBtn);
 
     // Create button to go to current day tasks
+    const allBtn = createElement('button', 'all-btn', 'All tasks', 'menu-btn');
+    leftMenu.appendChild(allBtn);
+
+    // Create button to go to current day tasks
     const listContainer = createElement('div', 'list-btn-container', '');
     leftMenu.appendChild(listContainer);
     const listsBtn = createElement('button', 'list-btn', 'My Lists', 'menu-btn');
     listContainer.appendChild(listsBtn);
     let isOpen = false;
     const listDiv = createListDiv();
-
-    // Create button to go to current day tasks
-    const allBtn = createElement('button', 'all-btn', 'All tasks', 'menu-btn');
-    leftMenu.appendChild(allBtn);
 
     //--------------------------EventListeners --------------------------------------//
     // Expand button
