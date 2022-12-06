@@ -1,5 +1,5 @@
 import './main.css';
-import createElement from '/src/DOM/elementCreator.js';
+import { tabSwitch, createElement } from '../domManipulator';
 
 export default () =>
 {
@@ -11,8 +11,5 @@ export default () =>
     const button = createElement('button', 'go-to-daily', 'Go to daily tasks →');
     content.appendChild(button);
 
-    button.addEventListener('click',  () =>
-    {
-        import(/*webpackChunkName: "daily"*/'/src/DOM/DailyTab/daily.js').then(({ default: loadTab})=>{loadTab()} );
-    })
+    button.addEventListener('click',  () => { tabSwitch('daily') });
 }

@@ -1,5 +1,5 @@
 import './menu.css';
-import createElement from '/src/DOM/elementCreator.js';
+import {createElement} from '/src/DOM/domManipulator.js';
 
 export default () =>
 {

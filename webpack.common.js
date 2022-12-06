@@ -3,9 +3,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 
 module.exports = {
-  entry: "./src/DOM/Index/index.js",
+  entry: "./src/DOM/index/index.js",
   output: {
-    filename: "[name].js",
+    filename: "index.js",
     chunkFilename: '[name].js',
     path: path.resolve(__dirname, "dist"),
     clean: true,  
@@ -13,7 +13,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       title: "To-Do",
-      template: "/src/DOM/Index/template.html"
+      template: "/src/DOM/index/index.html"
     }),
   ],
   devtool: "inline-source-map",
