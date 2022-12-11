@@ -21,3 +21,8 @@ button
     background-color: transparent;
     cursor: pointer;
 }
+#content
+{
+    height: 100%;
+    width: 100%;
+}

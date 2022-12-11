@@ -1,14 +1,14 @@
-/*-------------------------Header---------------------------------*/
+/*-------------------------Header---------------------------------------*/
 #expand-menu-btn
 {
-  position: fixed;
-  top: 0;
-  left: 0;
-  display: flex;
-  border-radius: 50%;
-  color: white;
-  padding: 1vh 1vw;
-  font-size: 4vmin;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    border-radius: 50%;
+    color: white;
+    padding: 1vh 1vw;
+    font-size: 4vmin;
 }
 /*-------------------------Sliding Menu---------------------------------*/
 #left-menu
@@ -51,7 +51,6 @@
     flex-direction: column;
     align-items: stretch;
     justify-content: flex-start;
-    border-bottom: .05vh solid rgba(0, 0, 0, 0.5);
 }
 #lists-container
 {
@@ -63,8 +62,6 @@
 }
 .listItem
 {
-    border-top: .05vh solid rgba(0, 0, 0);
-    border-bottom: .05vh solid rgba(0, 0, 0, 0.5);
     padding: 1vh 0vw;
 }
 .menu-btn

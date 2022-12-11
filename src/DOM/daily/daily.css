@@ -1,0 +1,67 @@
+#content
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+#div-list
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    background-color: white;
+    height: 90%;
+    width: 60%;
+    box-shadow: 0 0 20px 5px rgb(44, 42, 42) ;
+    border: 5px solid blue;
+}
+#title-list
+{
+    font-size: 7vmin;
+    text-align: center;
+    padding: .5vh 0vw;
+    height: 10%;
+
+}
+#task-container
+{
+    border-top: .5vh solid rgb(54, 54, 168);
+    border-bottom: .5vh solid rgb(54, 54, 168);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    height: 70%;
+    padding: .5vh .5vw;
+    gap: 1vh;
+    overflow:auto;
+}
+.task
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+    padding: 1vh 1vw;
+    background-color: rgb(197, 194, 191);
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px 1px rgb(32, 31, 31);
+}
+.task:hover
+{
+    transform: translate3d(2px, 2px, 2px);
+}
+.check
+{
+    appearance: none;
+    height: 100%;
+}
+.check::after
+{
+    content: "";
+    display: block;
+    height: 100%;
+    background-color: red;
+}
