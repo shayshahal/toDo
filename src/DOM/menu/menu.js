@@ -1,5 +1,5 @@
 import './menu.css';
-import {createElement} from '/src/DOM/domManipulator.js';
+import {tabSwitch, createElement} from '../domManipulator';
 
 export default () =>
 {
@@ -72,7 +72,11 @@ export default () =>
             expandMenuButton.textContent = '☰';
         }
     });
-
+    dailyBtn.addEventListener('click', () =>
+    {
+        tabSwitch('daily');
+        retractMenuButton.click();
+    });
     listsBtn.addEventListener('click', () => 
     {
         isOpen ? retractAnimation(listDiv, 'slideUp') : expandWithAni(listContainer, listDiv, 'slideDown');
@@ -97,8 +101,9 @@ function expandWithAni(parent, element, ani)
 function retractAnimation(element, ani)
 {
     var classList = element.classList;
-    while (classList.length > 0) {
-       classList.remove(classList.item(0));
+    while (classList.length > 0) 
+    {
+        classList.remove(classList.item(0));
     }
     element.classList.add(ani);
 }
