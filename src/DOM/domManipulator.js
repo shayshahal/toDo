@@ -1,4 +1,5 @@
-import { getList} from "../Logic/user";
+import {addTask} from "../Logic/user";
+
 export function createElement(eType, id, textContent, className = false) 
 {
     const element = document.createElement(eType);
@@ -19,12 +20,21 @@ export function tabSwitch(name)
     /* webpackInclude: /\.js$/*/
     `./${name}/${name}`).then(({ default: loadTab})=>{loadTab()});
 }
+export function createList(list)
+{
+    const listContainer = createElement('div', 'list', '');
+    list.tasks.forEach(task => {listContainer.appendChild(createTask(task))});
+    return listContainer;
+}
 export function createTask(task)
 {
+    const taskContainer = document.getElementById('task-container');
     const taskDiv = createElement('div', '', '', 'task');
     taskContainer.appendChild(taskDiv);
     const name = createElement('div', '', task.name);
     taskDiv.appendChild(name);
+    const desc = createElement('div', '', task.desc);
+    taskDiv.appendChild(desc);
     const date = createElement('div', '', task.date);
     taskDiv.appendChild(date);
     const prio = createElement('div', '', task.prio);
@@ -37,18 +47,19 @@ export function createTask(task)
 }
 export function createAddForm(listName)
 {
-    const addTask = createElement('form', 'add-task', '');
+    const addTaskDiv = createElement('form', 'add-task', '');
 
     const taskName = createElement('input', 'task-name', '');
-    addTask.appendChild(taskName);
+    addTaskDiv.appendChild(taskName);
     const taskDesc = createElement('input', 'task-desc', '');
-    addTask.appendChild(taskDesc);
+    addTaskDiv.appendChild(taskDesc);
     const taskDate = createElement('input', 'task-date', '');
     taskDate.type = 'date';
-    addTask.appendChild(taskDate);
+    taskDate.value = '2022-12-11';
+    addTaskDiv.appendChild(taskDate);
 
     const taskPrioDiv = createElement('form', 'task-prio-div', '');
-    addTask.appendChild(taskPrioDiv);
+    addTaskDiv.appendChild(taskPrioDiv);
 
     const taskPrioLow = createElement('input', 'task-prio-low', '');
     taskPrioLow.type = 'radio';
@@ -79,19 +90,15 @@ export function createAddForm(listName)
 
     const submit = createElement('button', 'task-submit', '+');
     submit.type = 'button';
-    addTask.appendChild(submit);
+    addTaskDiv.appendChild(submit);
 
     submit.addEventListener('click', () =>
     {
-        const list = getList(listName);
-        if(list)
-        {
-            let prio = taskPrioHigh.Checked ? taskPrioHigh.value : taskPrioMed.Checked ? taskPrioMed.value : taskPrioLow.value;
-            let task = list.addTask(taskName.value, taskDesc.value, taskDate.value, prio); 
-            if(task)
-                createTask(task);
-        }
-    })
-    return addTask;
+        let prio = taskPrioHigh.Checked ? taskPrioHigh.value : taskPrioMed.Checked ? taskPrioMed.value : taskPrioLow.value;
+        let task = addTask(listName, taskName.value, taskDesc.value, taskDate.value, prio);
+        if(task)
+            createTask(task);
+    });
+    return addTaskDiv;
 }
 
