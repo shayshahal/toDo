@@ -1,5 +1,5 @@
-export default (title, desc, date, prio) => 
+export default (name, desc, date, prio) => 
 {
     const isComplete = false;
-    return {title,desc,date,prio, isComplete};
+    return {name,desc,date,prio, isComplete};
 };
