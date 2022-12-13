@@ -1,5 +1,6 @@
 import './daily.css';
-import {createAddForm, createElement} from "../domManipulator";
+import {createElement, createList} from "../domManipulator";
+import { getList } from '../../Logic/user';
 
 export default () =>
 {
@@ -11,11 +12,8 @@ export default () =>
     const titleList = createElement('div', 'title-list', 'My Day');
     divList.appendChild(titleList);
 
-    const taskContainer = createElement('div', 'task-container', '');
-    divList.appendChild(taskContainer);
-
-    const addForm = createAddForm();
-    divList.appendChild(addForm);
-
+    const list = getList('My Day');
+    const listContainer = createList(list);
+    divList.appendChild(listContainer);
 
 }
