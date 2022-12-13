@@ -25,7 +25,7 @@
     height: 10%;
 
 }
-#task-container
+#list
 {
     border-top: .5vh solid rgb(54, 54, 168);
     border-bottom: .5vh solid rgb(54, 54, 168);
@@ -33,7 +33,7 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: stretch;
-    height: 70%;
+    height: 90%;
     padding: .5vh .5vw;
     gap: 1vh;
     overflow:auto;
