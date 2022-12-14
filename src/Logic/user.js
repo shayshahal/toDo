@@ -5,11 +5,15 @@ export function loadDay()
 {
     let day = listFactory('My Day');
     let all = JSON.parse(localStorage.getItem('All Tasks'));
-    console.log(all);
     if(all)
-        all.tasks.forEach(task => {if(task.date === '2022-12-11') {addTask(day, task.name, task.desc, task.date, task.prio)}});
+        all.tasks.forEach(task => {if(task.date === '2022-12-13') {addTask(day, task.name, task.desc, task.date, task.prio)}});
     else
-        localStorage.setItem('All Tasks', JSON.stringify(listFactory('All Tasks')));
+    {        
+        all = listFactory('All Tasks');
+        localStorage.setItem('All Tasks', JSON.stringify(all));
+    }
+    for (let i = 0; i < 4; i++)
+        addTask(day, 'name' + i, 'desc' + i, '2022-12-13', 'high');
     localStorage.setItem('My Day', JSON.stringify(day));
 }
 export function getList(name)
@@ -23,7 +27,6 @@ export function addList(name)
 {
     if(typeof(localStorage) === 'undefined' || JSON.parse(localStorage.getItem(name)))
         return;
-    
     localStorage.setItem(name, JSON.stringify(listFactory(name)));
 }
 
@@ -31,27 +34,22 @@ export function removeList(name)
 {
     if(typeof(localStorage) === 'undefined' || !JSON.parse(localStorage.getItem(name)))
         return;
-    
     localStorage.removeItem(name);
 }
-export function addTask(listName, taskName, taskDesc, taskDate, taskPrio)
+export function addTask(list, taskName, taskDesc, taskDate, taskPrio)
 {
-    let list = getList(listName);
-    if(!list || list.tasks.includes(taskName))
+    let all = getList('All Tasks');
+    if(!list || list.tasks.includes(taskName) || all.tasks.includes(taskName))
         return false;
     let task = taskFactory(taskName, taskDesc, taskDate, taskPrio);
-    list.tasks.shift(task);
-    let all = getList('All Tasks');
-    if(!all || all.tasks.includes(taskName))
-        return task;
-    getList('All Tasks').tasks.shift(task);
+    list.tasks.unshift(task);
+    all.tasks.unshift(task);
     return task;
 }
-export function removeTask(listName, taskName)
+export function removeTask(list, taskName)
 {
-    if(getList(listName).tasks.includes(taskName))
+    if(list.tasks.includes(taskName))
         return false;
-    getList(listName).tasks.filter(task => task.name !== taskName)
+    list.tasks.filter(task => task.name !== taskName)
     return true;
-    
 }
