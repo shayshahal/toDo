@@ -28,9 +28,7 @@ export function createList(list)
 }
 export function createTask(task)
 {
-    const taskContainer = document.getElementById('task-container');
     const taskDiv = createElement('div', '', '', 'task');
-    taskContainer.appendChild(taskDiv);
     const name = createElement('div', '', task.name);
     taskDiv.appendChild(name);
     const desc = createElement('div', '', task.desc);
@@ -45,7 +43,7 @@ export function createTask(task)
     taskDiv.appendChild(check);
     return taskDiv;
 }
-export function createAddForm(listName)
+/*export function createAddForm(listName)
 {
     const addTaskDiv = createElement('form', 'add-task', '');
 
@@ -101,4 +99,4 @@ export function createAddForm(listName)
     });
     return addTaskDiv;
 }
-
+*/
