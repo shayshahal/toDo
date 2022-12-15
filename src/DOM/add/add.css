@@ -1,0 +1,70 @@
+#add
+{
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 99;
+    height: 6vmin;
+    width: 6vmin;
+    font-size: 4vmin;
+    margin: 1vh 1vw;
+    background-color: white;
+    border-radius: 50%;
+    box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.5);
+}
+
+#add-div
+{
+    position: fixed;
+    top: 25%;
+    left: 25%;
+    z-index: 999;
+    background-color: white;
+    border: 3px solid red;
+    border-radius: 5px;
+    width: 50%;
+    height: 50%;
+}
+
+#add-title
+{
+    background-color: antiquewhite;
+    font-size: 3vmin;
+    padding: .5vh .5vw;
+}
+
+/*-----------------------------------ANIMATION-------------------------------*/
+
+.popIn
+{
+    animation: popIn .2s ease;
+    transform-origin: center center;
+}
+
+@keyframes popIn
+{
+    0%
+    {
+        transform: scale(0);
+    }
+    100%
+    {
+        transform: scale(1);
+    }
+} 
+.popOut
+{
+    animation: popOut .2s ease;
+    transform-origin: center center;
+}
+@keyframes popOut
+{
+    0%
+    {
+        transform: scale(1);
+    }
+    100%
+    {
+        transform: scale(0);
+    }
+} 
