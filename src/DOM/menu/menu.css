@@ -10,6 +10,7 @@
     padding: 1vh 1vw;
     font-size: 4vmin;
 }
+
 /*-------------------------Sliding Menu---------------------------------*/
 #left-menu
 {
@@ -71,18 +72,6 @@
     padding: 1.5vh 0vw;
     font-size: 2.5vmin;
 }
-#screen-cover
-{
-    display: block;
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    width: 100vw;
-    z-index: 99;
-    opacity: 30%;
-    background-color: black;
-}
 
 /* Animations */
 .slideRight
@@ -115,66 +104,4 @@
         transform: translateX(-100%);
     }
 } 
-.slideDown
-{
-    animation: slideDown .2s ease-in;
-    transform-origin: top center;
-}
-@keyframes slideDown
-{
-    0%
-    {
-        transform: rotateX(90deg);
-    }
-    100%
-    {
-        transform: rotateX(0deg);
-    }
-} 
-.slideUp
-{
-    animation: slideUp .2s ease-in;
-    transform-origin: top center;
-}
-@keyframes slideUp
-{
-    0%
-    {
-        transform: rotateX(0deg);
-    }
-    100%
-    {
-        transform: rotateX(90deg);
-    }
-} 
-.opIn
-{
-    animation: opIn .2s ease-in-out;
-}
-@keyframes opIn 
-{
-    0% 
-    {
-        opacity: 0%;
-    }
-    100%
-    {
-        opacity: 30%;
-    }
-}
-.opOut
-{
-    animation: opOut .2s ease-in-out;
 
-}
-@keyframes opOut
-{
-    0% 
-    {
-        opacity: 30%;
-    }
-    100%
-    {
-        opacity: 0%;
-    }
-}
