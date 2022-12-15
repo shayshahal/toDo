@@ -10,8 +10,11 @@ html, body
 {
     height: 100vh;
     width: 100vw;
-    background-image: linear-gradient(180deg, rgb(146, 72, 72) 3%, rgb(38, 121, 180) 100%);
-    font-size: 1vmax;
+    background-image: linear-gradient(180deg, rgb(146, 72, 72) 3%, rgb(38, 121, 180) 100%);}
+#content
+{
+    height: 100%;
+    width: 100%;
 }
 button
 {
@@ -20,9 +23,86 @@ button
     color: inherit;
     background-color: transparent;
     cursor: pointer;
+    transition: transform .2s ease;
 }
-#content
+button:hover
 {
-    height: 100%;
-    width: 100%;
+    transform: scale(1.1);
 }
+#screen-cover
+{
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 99;
+    opacity: 50%;
+    background-color: black;
+}
+.opIn
+{
+    animation: opIn .2s ease-in-out;
+}
+@keyframes opIn 
+{
+    0% 
+    {
+        opacity: 0%;
+    }
+    100%
+    {
+        opacity: 50%;
+    }
+}
+.opOut
+{
+    animation: opOut .2s ease-in-out;
+
+}
+@keyframes opOut
+{
+    0% 
+    {
+        opacity: 50%;
+    }
+    100%
+    {
+        opacity: 0%;
+    }
+}
+.slideDown
+{
+    animation: slideDown .2s ease-in;
+    transform-origin: top center;
+}
+
+@keyframes slideDown
+{
+    0%
+    {
+        transform: rotateX(90deg);
+    }
+    100%
+    {
+        transform: rotateX(0deg);
+    }
+} 
+.slideUp
+{
+    animation: slideUp .2s ease-in;
+    transform-origin: top center;
+}
+@keyframes slideUp
+{
+    0%
+    {
+        transform: rotateX(0deg);
+    }
+    100%
+    {
+        transform: rotateX(90deg);
+    }
+} 
+
