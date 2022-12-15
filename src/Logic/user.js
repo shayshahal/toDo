@@ -3,18 +3,23 @@ import taskFactory from './task';
 
 export function loadDay()
 {
-    let day = listFactory('My Day');
+    addList('My Day');
     let all = JSON.parse(localStorage.getItem('All Tasks'));
     if(all)
-        all.tasks.forEach(task => {if(task.date === '2022-12-13') {addTask(day, task.name, task.desc, task.date, task.prio)}});
+        all.tasks.forEach(task => {if(task.date === '2022-12-15') {addTask('My Day', task.name, task.desc, task.date, task.prio)}});
     else
     {        
         all = listFactory('All Tasks');
         localStorage.setItem('All Tasks', JSON.stringify(all));
     }
     for (let i = 0; i < 4; i++)
-        addTask(day, 'name' + i, 'desc' + i, '2022-12-13', 'high');
-    localStorage.setItem('My Day', JSON.stringify(day));
+        addTask('My Day', 'name' + i, 'desc' + i, '2022-12-15', 'high');
+}
+export function getAllLists()
+{
+    if(typeof(localStorage) === 'undefined')
+        return [];
+    return Array.from(Object.keys(localStorage));
 }
 export function getList(name)
 {
@@ -36,15 +41,21 @@ export function removeList(name)
         return;
     localStorage.removeItem(name);
 }
-export function addTask(list, taskName, taskDesc, taskDate, taskPrio)
+export function addTask(listName, taskName, taskDesc, taskDate, taskPrio)
 {
     let all = getList('All Tasks');
+    let list = getList(listName);
     if(!list || list.tasks.includes(taskName) || all.tasks.includes(taskName))
         return false;
     let task = taskFactory(taskName, taskDesc, taskDate, taskPrio);
     list.tasks.unshift(task);
+    localStorage.setItem(listName, JSON.stringify(list));
     all.tasks.unshift(task);
+    localStorage.setItem('All Tasks', JSON.stringify(all));
     return task;
+}
+export function editTask(listName, prevName, newTask)
+{
 }
 export function removeTask(list, taskName)
 {
