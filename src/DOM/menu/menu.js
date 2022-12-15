@@ -1,5 +1,5 @@
 import './menu.css';
-import {tabSwitch, createElement} from '../domManipulator';
+import {tabSwitch, createElement, expandWithAni,retractAnimation, removeAfterAni} from '../domManipulator';
 
 export default () =>
 {
@@ -25,6 +25,10 @@ export default () =>
     // Create screen cover for rest of main screen when menu is open
     const screenCover = createElement('div', 'screen-cover', '');
 
+    // Create home button
+    const homeBtn = createElement('button', 'home-btn', 'Home', 'menu-btn');
+    leftMenu.appendChild(homeBtn);
+
     // Create button to go to current day tasks
     const dailyBtn = createElement('button', 'dly-btn', 'My Day', 'menu-btn');
     leftMenu.appendChild(dailyBtn);
@@ -49,7 +53,6 @@ export default () =>
         expandWithAni(document.body, screenCover, 'opIn');
         expandMenuButton.textContent = '';
     });
-
     // Animations
     screenCover.addEventListener('click', (e) => 
     {
@@ -72,6 +75,11 @@ export default () =>
             expandMenuButton.textContent = '☰';
         }
     });
+    homeBtn.addEventListener('click', ()=>
+    {
+        tabSwitch('main');
+        retractMenuButton.click();
+    });
     dailyBtn.addEventListener('click', () =>
     {
         tabSwitch('daily');
@@ -92,27 +100,6 @@ export default () =>
     } );
 }
 
-function expandWithAni(parent, element, ani)
-{
-    element.classList.toggle(ani);
-    parent.appendChild(element);
-}
-
-function retractAnimation(element, ani)
-{
-    var classList = element.classList;
-    while (classList.length > 0) 
-    {
-        classList.remove(classList.item(0));
-    }
-    element.classList.add(ani);
-}
-
-function removeAfterAni(parent, element, ani)
-{
-    element.classList.remove(ani);
-    parent.removeChild(element);
-}
 
 function createListDiv()
 {
