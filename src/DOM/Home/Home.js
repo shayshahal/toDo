@@ -1,4 +1,4 @@
-import './main.css';
+import './Home.css';
 import { tabSwitch, createElement } from '../domManipulator';
 
 export default () =>
@@ -8,8 +8,8 @@ export default () =>
     content.appendChild(welcome);
     const welcome2 = createElement('div', 'welcome2', 'Your Source of Productivity.');
     content.appendChild(welcome2);
-    const button = createElement('button', 'go-to-daily', 'Go to daily tasks →');
+    const button = createElement('button', 'go-to-daily', 'Go to today\'s tasks →');
     content.appendChild(button);
 
-    button.addEventListener('click',  () => { tabSwitch('daily') });
+    button.addEventListener('click',  () => { tabSwitch('My Day') });
 }

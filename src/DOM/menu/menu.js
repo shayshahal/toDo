@@ -1,6 +1,6 @@
 import './menu.css';
 import {tabSwitch, createElement, expandWithAni,retractAnimation, removeAfterAni} from '../domManipulator';
-
+import {getAllLists} from '../../Logic/user';
 export default () =>
 {
     // Create Menu expending button
@@ -75,16 +75,6 @@ export default () =>
             expandMenuButton.textContent = '☰';
         }
     });
-    homeBtn.addEventListener('click', ()=>
-    {
-        tabSwitch('main');
-        retractMenuButton.click();
-    });
-    dailyBtn.addEventListener('click', () =>
-    {
-        tabSwitch('daily');
-        retractMenuButton.click();
-    });
     listsBtn.addEventListener('click', () => 
     {
         isOpen ? retractAnimation(listDiv, 'slideUp') : expandWithAni(listContainer, listDiv, 'slideDown');
@@ -98,16 +88,34 @@ export default () =>
             removeAfterAni(listContainer, e.target, 'slideUp');
         }
     } );
-}
 
+    //--------------------------NavListeners-------------------------//
+    homeBtn.addEventListener('click', ()=>
+    {
+        tabSwitch('Home');
+        retractMenuButton.click();
+    });
+    dailyBtn.addEventListener('click', ()=>
+    {
+        tabSwitch('My Day');
+        retractMenuButton.click();
+    });
+    allBtn.addEventListener('click', ()=>
+    {
+        tabSwitch('All Tasks');
+        retractMenuButton.click();
+    });
+}
 
 function createListDiv()
 {
     const container = createElement('div','lists-container', '');
-    for (let i = 0; i < 5; i++) 
-    {
-        const list = createElement('button', 'list-item' + i, 'List ' + i, 'listItem')
-        container.appendChild(list);
-    }
+    const arr = getAllLists().filter(l=> l!=='All Tasks')
+    arr.forEach(list => {
+        const listBtn = createElement('button', '', list, 'listItem')
+        console.log(list)
+        listBtn.addEventListener('click', ()=> tabSwitch(list));
+        container.appendChild(listBtn);
+    });
     return container;
 }

@@ -49,11 +49,24 @@
     background-color: rgb(197, 194, 191);
     border-radius: 5px;
     box-shadow: 1px 1px 5px 1px rgb(32, 31, 31);
-    transform: scale((1));
+    transition: height .3s ease;
 }
 .task:hover
 {
     transform: translate3d(2px, 2px, 2px);
+}
+.editable
+{
+    background-color: transparent;
+    box-shadow: none;
+    border: none;
+    font-family: inherit;
+    font-size: inherit;
+    height: inherit;
+}
+.editing
+{
+    height: 10vh;
 }
 .btnsDiv
 {
@@ -66,13 +79,6 @@
 }
 .check
 {
-    appearance: none;
-    background-color: red;
-    flex: 1;
-}
-.check::before
-{
-    content: "✔";
     text-align: center;
     display: flex;
     justify-content: center;
@@ -82,12 +88,31 @@
     cursor: pointer;
     transition: all 2 ease;
 }
-.check:checked::before
+#check
+{
+    appearance: none;
+    background-color: red;
+    flex: 1;
+}
+#check::before
+{
+    content: "✔";
+}
+#check:checked
 {
     background-color: black;
 }
-.edit
+#edit
 {
+    appearance: none;
     flex: 1;
     background-color: green;
+}
+#edit::before
+{
+    content: "✎";
+}
+#edit:checked
+{
+    background-color: rgb(76, 0, 255);
 }

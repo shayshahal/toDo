@@ -29,6 +29,14 @@ button:hover
 {
     transform: scale(1.1);
 }
+input
+{
+    background-color: inherit;
+    border: none;
+    color: inherit;
+    font: inherit;
+    box-shadow: none;
+}
 #screen-cover
 {
     display: block;
