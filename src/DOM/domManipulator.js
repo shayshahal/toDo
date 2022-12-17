@@ -1,3 +1,5 @@
+import { addTask, removeTask } from '../Logic/user';
+
 export function createElement(eType, id, textContent, className = false) 
 {
     const element = document.createElement(eType);
@@ -23,10 +25,10 @@ export function createList(list)
     if(!list)
         return;
     const listContainer = createElement('div', 'list', '');
-    list.tasks.forEach(task => {listContainer.prepend(createTask(task))});
+    list.tasks.forEach(task => {listContainer.prepend(createTask(list, task))});
     return listContainer;
 }
-export function createTask(task)
+export function createTask(list, task)
 {
     const taskDiv = createElement('div', '', '', 'task');
     const name = createElement('input', '', '', 'editable');
@@ -47,24 +49,40 @@ export function createTask(task)
     prio.disabled = 'true';
     prio.style.color = prio.textContent === 'high' ? 'red' : prio.textContent === 'medium' ? 'yellow' : 'green';
     taskDiv.appendChild(prio);
-    const btnsDiv = createElement('div', '','', 'btnsDiv');
+    const btnsDiv = createElement('div', 'btns-div', '');
+    taskDiv.appendChild(btnsDiv);
+    const deleteBtn = createElement('button', 'delete', 'X','check');
+    deleteBtn.style.visibility = 'hidden';
+    btnsDiv.appendChild(deleteBtn);
+    const editBtn = createElement('input', 'edit', '', 'check');
+    editBtn.type = 'checkBox';
+    btnsDiv.appendChild(editBtn);
     const checkBtn = createElement('input', 'check', '', 'check');
     checkBtn.type = 'checkBox';
     checkBtn.checked = task.isComplete;
     btnsDiv.appendChild(checkBtn);
-    const editBtn = createElement('input', 'edit', '', 'check');
-    editBtn.type = 'checkBox';
-    editBtn.addEventListener('click', ()=>
+    editBtn.addEventListener('change', (e)=>
     {
         name.disabled = !name.disabled;
         desc.disabled = !desc.disabled;
         date.disabled = !date.disabled;
-        prio.disabled = !desc.disabled;
+        prio.disabled = !prio.disabled;
         taskDiv.classList.toggle('editing');
+        if(!e.currentTarget.checked)
+        {
+            addTask(list.name, name.value, desc.value, date.value,prio.value);
+            deleteBtn.style.visibility = 'hidden';
+        }
+        else
+        {   
+            deleteBtn.style.visibility = 'visible';
+            removeTask(list, name.value);
+        }
     })
-    btnsDiv.appendChild(editBtn);
-    taskDiv.appendChild(btnsDiv);
-    
+    deleteBtn.addEventListener('click', ()=>
+    {
+        taskDiv.parentNode.removeChild(taskDiv);
+    })
     return taskDiv;
 }
 export function expandWithAni(parent, element, ani)
