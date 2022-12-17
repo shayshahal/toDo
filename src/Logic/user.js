@@ -24,7 +24,7 @@ export function getAllLists()
 export function getList(name)
 {
     if(typeof(localStorage) === 'undefined')
-        return listFactory('empty');
+        return false;
     return JSON.parse(localStorage.getItem(name));
 }
 
