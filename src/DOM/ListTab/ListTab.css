@@ -44,10 +44,11 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    padding: 0vh 0vw 0vh .5vw;
     height: 5vh;
     background-color: rgb(197, 194, 191);
+    padding: 0vh 0vw 0vh .5vw;
     border-radius: 5px;
+    border: 1px solid black;
     box-shadow: 1px 1px 5px 1px rgb(32, 31, 31);
     transition: height .3s ease;
 }
@@ -68,14 +69,13 @@
 {
     height: 10vh;
 }
-.btnsDiv
+#btns-div
 {
-    display: flex;
-    flex-direction: column;
-    align-self: stretch;
-    justify-content:space-between;
+    display: grid;
+    height: 100%;
+    grid-template-columns: repeat(3, 1fr);
     align-items: stretch;
-    width: 3vw;
+    width: 9vw;
 }
 .check
 {
@@ -86,13 +86,14 @@
     height: 100%;
     color: white;
     cursor: pointer;
-    transition: all 2 ease;
+    transition: all .2s ease;
+
 }
 #check
 {
     appearance: none;
     background-color: red;
-    flex: 1;
+    width: 3vw;
 }
 #check::before
 {
@@ -105,8 +106,8 @@
 #edit
 {
     appearance: none;
-    flex: 1;
     background-color: green;
+    flex: 1;
 }
 #edit::before
 {
@@ -115,4 +116,11 @@
 #edit:checked
 {
     background-color: rgb(76, 0, 255);
+}
+#delete
+{
+    background-color: rgb(116, 116, 72);
+    height: 100%;
+    transition: display .2s ease;
+    flex: 1;
 }
