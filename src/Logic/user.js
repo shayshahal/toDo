@@ -54,13 +54,11 @@ export function addTask(listName, taskName, taskDesc, taskDate, taskPrio)
     localStorage.setItem('All Tasks', JSON.stringify(all));
     return task;
 }
-export function editTask(listName, prevName, newTask)
-{
-}
 export function removeTask(list, taskName)
 {
-    if(list.tasks.includes(taskName))
-        return false;
-    list.tasks.filter(task => task.name !== taskName)
-    return true;
+    list.tasks = list.tasks.filter(task => task.name !== taskName);
+    localStorage.setItem(list.name, JSON.stringify(list));
+    let all = getList('All Tasks');
+    all.tasks = all.tasks.filter(task => task.name !== taskName)
+    localStorage.setItem(all.name, JSON.stringify(all));
 }
