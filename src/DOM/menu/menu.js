@@ -1,6 +1,6 @@
 import './menu.css';
 import {tabSwitch, createElement, expandWithAni,retractAnimation, removeAfterAni} from '../domManipulator';
-import {getAllLists} from '../../Logic/user';
+import {getAllLists, addList} from '../../Logic/user';
 export default () =>
 {
     // Create Menu expending button
@@ -112,10 +112,26 @@ function createListDiv()
     const container = createElement('div','lists-container', '');
     const arr = getAllLists().filter(l=> l!=='All Tasks')
     arr.forEach(list => {
-        const listBtn = createElement('button', '', list, 'listItem')
-        console.log(list)
+        const listBtn = createElement('button', '', list, 'listItem');
         listBtn.addEventListener('click', ()=> tabSwitch(list));
         container.appendChild(listBtn);
     });
+    const listCreatorForm = createElement('div','list-creator-form', '', 'listItem');
+    container.appendChild(listCreatorForm);
+    const listName = createElement('input', 'list-name', '');
+    listName.type = 'text';
+    listName.value = 'New List';
+    listCreatorForm.appendChild(listName);
+    const listSubmit = createElement('button', 'list-submit', '+');
+    listCreatorForm.appendChild(listSubmit);
+    listSubmit.addEventListener('click', ()=>
+    {
+        if(addList(listName.value))
+        {
+            const listBtn = createElement('button', '', listName.value, 'listItem');
+            listBtn.addEventListener('click', ()=> tabSwitch(listName.value));
+            container.insertBefore(listBtn, container.lastChild);
+        }
+    })
     return container;
 }

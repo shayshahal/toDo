@@ -63,7 +63,7 @@
 }
 .listItem
 {
-    padding: 1vh 0vw;
+    padding: 1vh .2vw;
 }
 .menu-btn
 {
@@ -72,7 +72,24 @@
     padding: 1.5vh 0vw;
     font-size: 2.5vmin;
 }
-
+#list-creator-form
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+#list-creator-form input
+{
+    background-color: transparent;
+    border: 1px solid white;
+}
+#list-creator-form button
+{
+    background-color: transparent;
+    font-weight: 900;
+    font-size: 3vmin;
+}
 /* Animations */
 .slideRight
 {
