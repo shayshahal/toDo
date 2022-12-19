@@ -30,14 +30,15 @@ export function getList(name)
 
 export function addList(name)
 {
-    if(typeof(localStorage) === 'undefined' || JSON.parse(localStorage.getItem(name)))
-        return;
+    if(typeof(localStorage) === 'undefined' || JSON.parse(localStorage.getItem(name)) || name.length === 0)
+        return false;
     localStorage.setItem(name, JSON.stringify(listFactory(name)));
+    return true;
 }
 
 export function removeList(name)
 {
-    if(typeof(localStorage) === 'undefined' || !JSON.parse(localStorage.getItem(name)))
+    if(typeof(localStorage) === 'undefined' || !JSON.parse(localStorage.getItem(name)) || name.length === 0)
         return;
     localStorage.removeItem(name);
 }
@@ -49,7 +50,7 @@ export function addTask(listName, taskName, taskDesc, taskDate, taskPrio)
         return;
     let task = taskFactory(taskName, taskDesc, taskDate, taskPrio);
     if(!task)
-        return false;
+        return;
     list.tasks.unshift(task);
     localStorage.setItem(listName, JSON.stringify(list));
     all.tasks.unshift(task);
