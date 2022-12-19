@@ -48,6 +48,8 @@ export function addTask(listName, taskName, taskDesc, taskDate, taskPrio)
     if(!list || list.tasks.includes(taskName) || all.tasks.includes(taskName))
         return false;
     let task = taskFactory(taskName, taskDesc, taskDate, taskPrio);
+    if(!task)
+        return false;
     list.tasks.unshift(task);
     localStorage.setItem(listName, JSON.stringify(list));
     all.tasks.unshift(task);
