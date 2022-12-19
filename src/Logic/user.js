@@ -45,8 +45,8 @@ export function addTask(listName, taskName, taskDesc, taskDate, taskPrio)
 {
     let all = getList('All Tasks');
     let list = getList(listName);
-    if(!list || list.tasks.includes(taskName) || all.tasks.includes(taskName))
-        return false;
+    if(!list || list.tasks.some(task => task.name === taskName) || all.tasks.some(task => task.name === taskName))
+        return;
     let task = taskFactory(taskName, taskDesc, taskDate, taskPrio);
     if(!task)
         return false;
