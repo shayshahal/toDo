@@ -1,6 +1,6 @@
 import { createElement,expandWithAni,retractAnimation, removeAfterAni, createTask } from '../domManipulator';
 import './add.css';
-import {addTask, getAllLists } from '../../Logic/user';
+import {addTask, getAllLists, getList } from '../../Logic/user';
 
 export default () =>
 {
@@ -80,13 +80,17 @@ export default () =>
     {
         let prio = taskPrioHigh.checked ? taskPrioHigh.value : taskPrioMed.checked ? taskPrioMed.value : taskPrioLow.value;
         let task = addTask(allLists[selectList.value], taskName.value, taskDesc.value, taskDate.value, prio);
+        console.log(task)
         if(task)
         {
             const listContainer = document.getElementById('list');
-            listContainer.prepend(createTask(task));
+            listContainer.prepend(createTask(getList(allLists[selectList.value]), task));
+            screenCover.click();
         }
+        else
+        {
 
-        screenCover.click();
+        }
     });
     //------------------------------ANIMATION------------------------------------------//
     addButton.addEventListener('click', ()=>
