@@ -46,6 +46,7 @@ export default () =>
     taskPrioLow.type = 'radio';
     taskPrioLow.value = 'low';
     taskPrioLow.name = 'prio';
+    taskPrioLow.checked = true;
     taskPrioDiv.appendChild(taskPrioLow);
     const lowLabel = createElement('label', '', 'Low');
     lowLabel.for = 'task-prio-low';
@@ -55,6 +56,7 @@ export default () =>
     taskPrioMed.type = 'radio';
     taskPrioMed.value = 'med';
     taskPrioMed.name = 'prio';
+    taskPrioMed.checked = false;
     taskPrioDiv.appendChild(taskPrioMed);
     const medLabel = createElement('label', '', 'Medium');
     medLabel.for = 'task-prio-med';
@@ -64,6 +66,7 @@ export default () =>
     taskPrioHigh.type = 'radio';
     taskPrioHigh.value = 'high';
     taskPrioHigh.name = 'prio';
+    taskPrioHigh.checked = false;
     taskPrioDiv.appendChild(taskPrioHigh);
     const highLabel = createElement('label', '', 'High');
     highLabel.for = 'task-prio-high';
@@ -75,7 +78,7 @@ export default () =>
 
     submit.addEventListener('click', () =>
     {
-        let prio = taskPrioHigh.Checked ? taskPrioHigh.value : taskPrioMed.Checked ? taskPrioMed.value : taskPrioLow.value;
+        let prio = taskPrioHigh.checked ? taskPrioHigh.value : taskPrioMed.checked ? taskPrioMed.value : taskPrioLow.value;
         let task = addTask(allLists[selectList.value], taskName.value, taskDesc.value, taskDate.value, prio);
         if(task)
         {
