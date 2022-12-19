@@ -93,7 +93,6 @@
 {
     appearance: none;
     background-color: red;
-    width: 3vw;
 }
 #check::before
 {
@@ -107,7 +106,6 @@
 {
     appearance: none;
     background-color: green;
-    flex: 1;
 }
 #edit::before
 {
@@ -122,5 +120,4 @@
     background-color: rgb(116, 116, 72);
     height: 100%;
     transition: display .2s ease;
-    flex: 1;
 }
