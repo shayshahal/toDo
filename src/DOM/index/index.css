@@ -1,26 +1,39 @@
+:root 
+{
+    --dom: #000000;
+    --sec: #FAE9F8;
+    --third: #A1729C;
+    --shadow: rgba(5, 5, 5, 0.5);
+}
 *
 {
     box-sizing: border-box;
     margin: 0;
     overflow: hidden;
     padding: 0;
+    color: var(--sec);
 }
 html, body
 {
     height: 100vh;
     width: 100vw;
-    background-image: linear-gradient(180deg, rgb(146, 72, 72) 3%, rgb(38, 121, 180) 100%);}
+    background-image: linear-gradient(to right top, #000000, #2c1f24, #533846, #7a546e, #a1729c);
+}
 #content
 {
     height: 100%;
     width: 100%;
+}
+label
+{
+    color: inherit;
 }
 button
 {
     border: none;
     font-size: inherit;
     color: inherit;
-    background-color: transparent;
+    background-color: inherit;
     cursor: pointer;
     transition: transform .2s ease;
 }
@@ -28,13 +41,14 @@ button:hover
 {
     transform: scale(1.1);
 }
-input
+input, select,option, input:focus, select:focus
 {
     background-color: inherit;
     border: none;
     color: inherit;
     font: inherit;
     box-shadow: none;
+    outline: none;
 }
 #screen-cover
 {

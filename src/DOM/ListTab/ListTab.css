@@ -2,41 +2,30 @@
 {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-#div-list
-{
-    display: flex;
-    flex-direction: column;
     justify-content: flex-start;
     align-items: stretch;
-    background-color: white;
-    height: 90%;
-    width: 60%;
-    box-shadow: 0 0 20px 5px rgb(44, 42, 42) ;
-    border: 5px solid blue;
 }
 #title-list
 {
     font-size: 7vmin;
     text-align: center;
+    color: var(--sec);
     padding: .5vh 0vw;
     height: 10%;
-
+    border-bottom: 2px solid var(--third);
 }
 #list
 {
-    border-top: .5vh solid rgb(54, 54, 168);
-    border-bottom: .5vh solid rgb(54, 54, 168);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: stretch;
     height: 90%;
-    padding: 1vh .5vw;
+    width: 100%;
+    padding: 2vh 1vw;
     gap: 1.25vh;
-    overflow:auto;
+    overflow: auto;
+    color: var(--dom);
 }
 .task
 {
@@ -44,12 +33,13 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    height: 5vh;
-    background-color: rgb(197, 194, 191);
-    padding: 0vh 0vw 0vh .5vw;
+    min-height: 7vh;
+    background-color: var(--sec);
+    padding: .5vh .5vw;
+    color: inherit;
     border-radius: 5px;
-    border: 1px solid black;
-    box-shadow: 1px 1px 5px 1px rgb(32, 31, 31);
+    border: 1px solid var(--third);
+    box-shadow: 1px 1px 5px 1px var(--shadow);
     transition: height .3s ease;
 }
 .task:hover
@@ -84,15 +74,15 @@
     justify-content: center;
     align-items: center;
     height: 100%;
-    color: white;
+    border-radius: 3px;
     cursor: pointer;
     transition: all .2s ease;
-
 }
 #check
 {
     appearance: none;
-    background-color: red;
+    border: 1px solid var(--third);
+    color: var(--dom);
 }
 #check::before
 {
@@ -100,12 +90,13 @@
 }
 #check:checked
 {
-    background-color: black;
+    background-color: var(--third);
 }
 #edit
 {
     appearance: none;
-    background-color: green;
+    border: 1px solid var(--third);
+    color: var(--dom);
 }
 #edit::before
 {
@@ -113,11 +104,17 @@
 }
 #edit:checked
 {
-    background-color: rgb(76, 0, 255);
+    background-color: var(--third);
 }
 #delete
 {
-    background-color: rgb(116, 116, 72);
+    background-color: var(--third);
     height: 100%;
     transition: display .2s ease;
+}
+#prio:disabled
+{
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
 }

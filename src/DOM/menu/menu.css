@@ -6,7 +6,7 @@
     left: 0;
     display: flex;
     border-radius: 50%;
-    color: white;
+    color: var(--sec);
     padding: 1vh 1vw;
     font-size: 4vmin;
 }
@@ -16,17 +16,17 @@
 {
     position: fixed;
     display: flex;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: var(--dom);
     flex-direction: column;
     justify-content: flex-start;
     align-items: stretch;
     top: 0%;
     left: 0%;
     height: 100%;
-    color: white;
+    color: var(--sec);
     width: 12vw;
     z-index: 999;
-    box-shadow: 0 3px 5px black;
+    box-shadow: 0 3px 5px var(--shadow);
 }
 #top-div-left-menu
 {
@@ -41,10 +41,12 @@
 #retract-menu-btn
 {
     font-size: 3vmin;
+    color: var(--sec);
 }
 #name-menu
 {
     font-size: 2vmin;
+    color: var(--sec);
 }
 #list-btn-container
 {
@@ -67,8 +69,7 @@
 }
 .menu-btn
 {
-    border-top: .1vh solid rgba(255, 255, 255, 0.5);
-    border-bottom: .1vh solid rgba(255, 255, 255, 0.5);
+    border-top: .1vh solid var(--third);
     padding: 1.5vh 0vw;
     font-size: 2.5vmin;
 }
@@ -82,7 +83,7 @@
 #list-creator-form input
 {
     background-color: transparent;
-    border: 1px solid white;
+    border: 1px solid var(--sec);
 }
 #list-creator-form button
 {

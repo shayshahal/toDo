@@ -19,7 +19,6 @@
 {
     padding: 1vh 0vw;
     font-size: 3vmin;
-    color: linear-gradient(90deg, black 0%, white 100%);
     animation: entrance3 2s cubic-bezier(0,1,.5,1);
 }
 /*************************ANIMATIONS***************************/
