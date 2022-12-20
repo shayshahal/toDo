@@ -44,10 +44,19 @@ export function createTask(list, task)
     date.type = 'date';
     date.disabled = 'true';
     taskDiv.appendChild(date);
-    const prio = createElement('input', '', task.prio, 'editable');
-    prio.value = task.prio;
+    const prio = createElement('select', 'prio', '', 'editable');
+    const lowOp = createElement('option', '', 'Low','prios');
+    lowOp.value = 'Low';
+    prio.appendChild(lowOp);
+    const medOp = createElement('option', '', 'Medium','prios');
+    medOp.value = 'Medium';
+    prio.appendChild(medOp);
+    const highOp = createElement('option', '', 'High','prios');
+    highOp.value = 'High';
+    prio.appendChild(highOp);
+    lowOp.value === task.prio ? lowOp.selected = true : medOp.value === task.prio ? medOp.selected = true : highOp.selected = true;
+    prio.style.color = lowOp.selected ? 'green' : medOp.selected ? 'yellow' : 'red';
     prio.disabled = 'true';
-    prio.style.color = prio.textContent === 'high' ? 'red' : prio.textContent === 'medium' ? 'yellow' : 'green';
     taskDiv.appendChild(prio);
     const btnsDiv = createElement('div', 'btns-div', '');
     taskDiv.appendChild(btnsDiv);
@@ -78,6 +87,10 @@ export function createTask(list, task)
             deleteBtn.style.visibility = 'visible';
             removeTask(list, name.value);
         }
+    })
+    prio.addEventListener('change', ()=>
+    {
+        prio.style.color = lowOp.selected ? 'green' : medOp.selected ? 'yellow' : 'red';
     })
     deleteBtn.addEventListener('click', ()=>
     {
