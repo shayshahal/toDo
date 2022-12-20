@@ -6,16 +6,13 @@ export default (name) =>
 {
     const content = document.getElementById('content');
 
-    const divList = createElement('div', 'div-list','');
-    content.appendChild(divList);
-
     const titleList = createElement('div', 'title-list', name);
-    divList.appendChild(titleList);
+    content.appendChild(titleList);
 
     const list = getList(name);
     if(!list)
         return;
     const listContainer = createList(list);
-    divList.appendChild(listContainer);
+    content.appendChild(listContainer);
 
 }
