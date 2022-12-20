@@ -15,13 +15,8 @@ export default () =>
     const addTitle = createElement('div', 'add-title', 'Add a task: ')
     addTaskDiv.appendChild(addTitle);
 
-    const selectContainer = createElement('div', 'select-container', '');
-    addTaskDiv.appendChild(selectContainer);
-    const selectList = document.createElement('select');
-    selectContainer.appendChild(selectList);
-    const firstOp = createElement('option', '', 'Select list: ', 'option');
-    firstOp.value = '0';
-    selectList.appendChild(firstOp);
+    const selectList = createElement('select', 'select-list', 'Select list:');
+    addTaskDiv.appendChild(selectList);
     const allLists = getAllLists();
     allLists.forEach((list, index) => 
     {
@@ -31,20 +26,20 @@ export default () =>
     });
 
     const taskName = createElement('input', 'task-name', '');
+    taskName.placeholder = "Type your name for the task here..."
     addTaskDiv.appendChild(taskName);
     const taskDesc = createElement('input', 'task-desc', '');
+    taskDesc.placeholder = "Type your description for the task here..."
     addTaskDiv.appendChild(taskDesc);
     const taskDate = createElement('input', 'task-date', '');
     taskDate.type = 'date';
     taskDate.value = '2022-12-11';
     addTaskDiv.appendChild(taskDate);
-
-    const taskPrioDiv = createElement('form', 'task-prio-div', '');
+    const taskPrioDiv = createElement('form', 'task-prio', '');
     addTaskDiv.appendChild(taskPrioDiv);
-
     const taskPrioLow = createElement('input', 'task-prio-low', '');
     taskPrioLow.type = 'radio';
-    taskPrioLow.value = 'low';
+    taskPrioLow.value = 'Low';
     taskPrioLow.name = 'prio';
     taskPrioLow.checked = true;
     taskPrioDiv.appendChild(taskPrioLow);
@@ -54,7 +49,7 @@ export default () =>
 
     const taskPrioMed = createElement('input', 'task-prio-med', '');
     taskPrioMed.type = 'radio';
-    taskPrioMed.value = 'med';
+    taskPrioMed.value = 'Medium';
     taskPrioMed.name = 'prio';
     taskPrioMed.checked = false;
     taskPrioDiv.appendChild(taskPrioMed);
@@ -64,7 +59,7 @@ export default () =>
 
     const taskPrioHigh = createElement('input', 'task-prio-high', '');
     taskPrioHigh.type = 'radio';
-    taskPrioHigh.value = 'high';
+    taskPrioHigh.value = 'High';
     taskPrioHigh.name = 'prio';
     taskPrioHigh.checked = false;
     taskPrioDiv.appendChild(taskPrioHigh);
