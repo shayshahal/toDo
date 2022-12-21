@@ -76,6 +76,7 @@
     appearance: none;
     border: 1px solid var(--third);
     color: var(--dom);
+    opacity: 0;
 }
 #check::before
 {
