@@ -21,6 +21,10 @@
     font-size: 3vmin;
     animation: entrance3 2s cubic-bezier(0,1,.5,1);
 }
+#go-to-daily:hover
+{
+    color: var(--fourth);
+}
 /*************************ANIMATIONS***************************/
 
 @keyframes entrance

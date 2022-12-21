@@ -75,6 +75,12 @@
     border-top: .1vh solid var(--third);
     padding: 1.5vh 0vw;
     font-size: 2.5vmin;
+    transition: all .2s ease;
+}
+.menu-btn:hover
+{
+    color: var(--third);
+    font-size: 3vmin;
 }
 #list-creator-form
 {
