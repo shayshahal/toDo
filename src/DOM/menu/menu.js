@@ -116,7 +116,7 @@ function createListDiv()
         listBtn.addEventListener('click', ()=> tabSwitch(list));
         container.appendChild(listBtn);
     });
-    const listCreatorForm = createElement('div','list-creator-form', '', 'listItem');
+    const listCreatorForm = createElement('div','list-creator-form', '');
     container.appendChild(listCreatorForm);
     const listName = createElement('input', 'list-name', '');
     listName.type = 'text';

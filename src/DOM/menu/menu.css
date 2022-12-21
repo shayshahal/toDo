@@ -16,7 +16,7 @@
 {
     position: fixed;
     display: flex;
-    background-color: var(--dom);
+    background-color: var(--fourth);
     flex-direction: column;
     justify-content: flex-start;
     align-items: stretch;
@@ -25,6 +25,7 @@
     height: 100%;
     color: var(--sec);
     width: 12vw;
+    max-width: 20%;
     z-index: 999;
     box-shadow: 0 3px 5px var(--shadow);
 }
@@ -37,16 +38,15 @@
     gap: 1vw;
     align-items: center;
     padding: 0 1vw;
+    color: var(--sec);
 }
 #retract-menu-btn
 {
     font-size: 3vmin;
-    color: var(--sec);
 }
 #name-menu
 {
     font-size: 2vmin;
-    color: var(--sec);
 }
 #list-btn-container
 {
@@ -54,6 +54,7 @@
     flex-direction: column;
     align-items: stretch;
     justify-content: flex-start;
+    color: var(--sec);
 }
 #lists-container
 {
@@ -62,10 +63,12 @@
     justify-content: flex-start;
     align-items: stretch;
     font-size: 1.5vmin;
+    color: var(--sec);
 }
 .listItem
 {
     padding: 1vh .2vw;
+    border-top: .05vh solid var(--third);
 }
 .menu-btn
 {
@@ -79,11 +82,13 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    padding: 0vh .5vw;
 }
 #list-creator-form input
 {
     background-color: transparent;
     border: 1px solid var(--sec);
+    padding: .2vh .2vw;
 }
 #list-creator-form button
 {
