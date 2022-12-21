@@ -81,10 +81,12 @@ export function createTask(list, task)
         {
             addTask(list.name, name.value, desc.value, date.value,prio.value);
             deleteBtn.style.visibility = 'hidden';
+            deleteBtn.style.opacity = '0';
         }
         else
         {   
             deleteBtn.style.visibility = 'visible';
+            deleteBtn.style.opacity = '1';
             removeTask(list, name.value);
         }
     })
