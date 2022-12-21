@@ -1,28 +1,38 @@
 :root 
 {
-    --dom: #000000;
-    --sec: #FAE9F8;
-    --third: #A1729C;
+    --dom: #14D1C8;
+    --sec: #99005D;
+    --third: #009A92;
+    --fourth: #C1FCF7;
     --shadow: rgba(5, 5, 5, 0.5);
+}
+@font-face 
+{
+    font-family: 'gilroy';
+    src: url('./Gilroy-ExtraBold.otf') format('opentype'),
+    url('./Gilroy-Light.otf') format('opentype');
+    font-weight: 600;
+    font-style: normal;
 }
 *
 {
+    font-family: 'gilroy';
     box-sizing: border-box;
     margin: 0;
     overflow: hidden;
     padding: 0;
-    color: var(--sec);
 }
 html, body
 {
     height: 100vh;
     width: 100vw;
-    background-image: linear-gradient(to right top, #000000, #2c1f24, #533846, #7a546e, #a1729c);
 }
 #content
 {
     height: 100%;
     width: 100%;
+    background-color: var(--dom);
+    color: var(--sec);
 }
 label
 {
@@ -32,14 +42,10 @@ button
 {
     border: none;
     font-size: inherit;
-    color: inherit;
     background-color: inherit;
+    color: inherit;
     cursor: pointer;
-    transition: transform .2s ease;
-}
-button:hover
-{
-    transform: scale(1.1);
+    outline: none;
 }
 input, select,option, input:focus, select:focus
 {
