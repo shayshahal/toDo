@@ -17,14 +17,6 @@ export default () =>
 
     const selectList = createElement('select', 'select-list', 'Select list:');
     addTaskDiv.appendChild(selectList);
-    const allLists = getAllLists();
-    allLists.forEach((list, index) => 
-    {
-        const op = createElement('option', '', list, 'option');
-        op.value = '' + index;
-        selectList.appendChild(op);
-    });
-
     const taskName = createElement('input', 'task-name', '');
     taskName.placeholder = "Type your name for the task here..."
     addTaskDiv.appendChild(taskName);
@@ -82,16 +74,22 @@ export default () =>
             listContainer.prepend(createTask(getList(allLists[selectList.value]), task));
             screenCover.click();
         }
-        else
-        {
-
-        }
     });
     //------------------------------ANIMATION------------------------------------------//
     addButton.addEventListener('click', ()=>
     {
         expandWithAni(document.body, addTaskDiv, 'popIn');
         expandWithAni(document.body, screenCover, 'opIn');
+        for(const list of selectList.childNodes)
+            selectList.removeChild(list);
+        const allLists = getAllLists();
+        allLists.forEach((list, index) => 
+        {
+            const op = createElement('option', '', list, 'option');
+            op.value = '' + index;
+            selectList.appendChild(op);
+        });
+    
     });
     screenCover.addEventListener('click', (e) => 
     {
