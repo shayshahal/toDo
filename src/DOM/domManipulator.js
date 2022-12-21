@@ -63,13 +63,13 @@ export function createTask(list, task)
     const deleteBtn = createElement('button', 'delete', 'X','check');
     deleteBtn.style.visibility = 'hidden';
     btnsDiv.appendChild(deleteBtn);
-    const editBtn = createElement('input', 'edit', '', 'check');
-    editBtn.type = 'checkBox';
-    btnsDiv.appendChild(editBtn);
     const checkBtn = createElement('input', 'check', '', 'check');
     checkBtn.type = 'checkBox';
     checkBtn.checked = task.isComplete;
     btnsDiv.appendChild(checkBtn);
+    const editBtn = createElement('input', 'edit', '', 'check');
+    editBtn.type = 'checkBox';
+    btnsDiv.appendChild(editBtn);
     editBtn.addEventListener('change', (e)=>
     {
         name.disabled = !name.disabled;
@@ -79,14 +79,18 @@ export function createTask(list, task)
         taskDiv.classList.toggle('editing');
         if(!e.currentTarget.checked)
         {
-            addTask(list.name, name.value, desc.value, date.value,prio.value);
             deleteBtn.style.visibility = 'hidden';
             deleteBtn.style.opacity = '0';
+            checkBtn.style.visibility = 'hidden';
+            checkBtn.style.opacity = '0';
+            addTask(list.name, name.value, desc.value, date.value,prio.value);
         }
         else
         {   
             deleteBtn.style.visibility = 'visible';
             deleteBtn.style.opacity = '1';
+            checkBtn.style.visibility = 'visible';
+            checkBtn.style.opacity = '1';
             removeTask(list, name.value);
         }
     })
