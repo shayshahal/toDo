@@ -1,6 +1,6 @@
 import './menu.css';
 import {tabSwitch, createElement, expandWithAni,retractAnimation, removeAfterAni} from '../domManipulator';
-import {getAllLists, addList} from '../../Logic/user';
+import {getAllLists, addList, removeList} from '../../Logic/user';
 export default () =>
 {
     // Create Menu expending button
@@ -110,17 +110,26 @@ export default () =>
 function createListDiv()
 {
     const container = createElement('div','lists-container', '');
-    const arr = getAllLists().filter(l=> l!=='All Tasks')
+    const arr = getAllLists().filter(l=> l!=='My Day'&&l!=='All Tasks')
     arr.forEach(list => {
-        const listBtn = createElement('button', '', list, 'listItem');
+        const listItem = createElement('div', '', '', 'listItem')
+        container.appendChild(listItem);
+        const listRemove = createElement('button', '', '-', 'listRemove');
+        listItem.appendChild(listRemove);
+        const listBtn = createElement('button', '', list, 'listBtn');
         listBtn.addEventListener('click', ()=> tabSwitch(list));
-        container.appendChild(listBtn);
+        listRemove.addEventListener('click', ()=>{
+            if(removeList(listBtn.textContent))
+                container.removeChild(listItem);
+        });
+        listItem.appendChild(listBtn);
     });
     const listCreatorForm = createElement('div','list-creator-form', '');
     container.appendChild(listCreatorForm);
     const listName = createElement('input', 'list-name', '');
     listName.type = 'text';
-    listName.value = 'New List';
+    listName.maxLength = 18;
+    listName.placeholder = 'New List';
     listCreatorForm.appendChild(listName);
     const listSubmit = createElement('button', 'list-submit', '+');
     listCreatorForm.appendChild(listSubmit);
@@ -128,9 +137,19 @@ function createListDiv()
     {
         if(addList(listName.value))
         {
-            const listBtn = createElement('button', '', listName.value, 'listItem');
+            const listItem = createElement('div', '', '', 'listItem')
+            const listRemove = createElement('button', '', '-', 'listRemove');
+            listItem.appendChild(listRemove);
+            const listBtn = createElement('button', '', listName.value, 'listBtn');
+            listItem.appendChild(listBtn);
             listBtn.addEventListener('click', ()=> tabSwitch(listName.value));
-            container.insertBefore(listBtn, container.lastChild);
+            container.insertBefore(listItem, container.lastChild);
+            listRemove.addEventListener('click', ()=>{
+                if(removeList(listBtn.textContent))
+                {
+                    container.removeChild(listItem);
+                }
+            });
         }
     })
     return container;
