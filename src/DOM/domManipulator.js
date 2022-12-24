@@ -33,6 +33,7 @@ export function createTask(list, task)
     const taskDiv = createElement('div', '', '', 'task');
     const name = createElement('input', '', '', 'editable');
     name.value = task.name;
+    name.maxLength = 18;
     name.disabled = 'true';
     taskDiv.appendChild(name);
     const desc = createElement('input', '', '', 'editable');
@@ -70,6 +71,13 @@ export function createTask(list, task)
     const editBtn = createElement('input', 'edit', '', 'check');
     editBtn.type = 'checkBox';
     btnsDiv.appendChild(editBtn);
+    name.addEventListener('change', ()=>
+    {
+        if(name.value === '')
+            editBtn.disabled = true;
+        else
+            editBtn.disabled = false;
+    })
     editBtn.addEventListener('change', (e)=>
     {
         name.disabled = !name.disabled;
