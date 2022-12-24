@@ -1,4 +1,4 @@
-export default (name, desc, date, prio) => 
+export default (name, desc, date=false, prio) => 
 {
     const isComplete = false;
     if(name === '' || desc === '')
