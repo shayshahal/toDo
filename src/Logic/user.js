@@ -5,15 +5,15 @@ export function loadDay()
 {
     addList('My Day');
     let all = JSON.parse(localStorage.getItem('All Tasks'));
+    const t = new Date();
+    let currDate = `${t.getFullYear()}-${t.getMonth()+1}-${t.getDate()}`;
     if(all)
-        all.tasks.forEach(task => {if(task.date === '2022-12-15') {addTask('My Day', task.name, task.desc, task.date, task.prio)}});
+        all.tasks.forEach(task => {if(task.date === currDate) {addTask('My Day', task.name, task.desc, task.date, task.prio)}});
     else
     {        
         all = listFactory('All Tasks');
         localStorage.setItem('All Tasks', JSON.stringify(all));
     }
-    for (let i = 0; i < 4; i++)
-        addTask('My Day', 'name' + i, 'desc' + i, '2022-12-15', 'high');
 }
 export function getAllLists()
 {
@@ -38,9 +38,11 @@ export function addList(name)
 
 export function removeList(name)
 {
+
     if(typeof(localStorage) === 'undefined' || !JSON.parse(localStorage.getItem(name)) || name.length === 0)
-        return;
+        return false;
     localStorage.removeItem(name);
+    return true;
 }
 export function addTask(listName, taskName, taskDesc, taskDate, taskPrio)
 {
