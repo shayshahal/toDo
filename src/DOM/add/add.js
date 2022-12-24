@@ -14,18 +14,43 @@ export default () =>
 
     const addTitle = createElement('div', 'add-title', 'Add a task: ')
     addTaskDiv.appendChild(addTitle);
-
+    let allLists;
     const selectList = createElement('select', 'select-list', 'Select list:');
+    addButton.addEventListener('click', ()=>
+    {
+        while (selectList.firstChild)
+            selectList.removeChild(selectList.firstChild);
+        allLists = getAllLists();
+        allLists.forEach((list, index) => 
+        {
+            const op = createElement('option', '', list, 'option');
+            op.value = '' + index;
+            selectList.appendChild(op);
+        });
+    })
+    selectList.addEventListener('change', ()=>
+    {
+        if(allLists[selectList.value] === 'My Day')
+        {
+            const t = new Date();
+            taskDate.value = `${t.getFullYear()}-${t.getMonth()+1}-${t.getDate()}`;
+            taskDate.disabled = true;
+        }
+        else
+            taskDate.disabled = false;
+    })
     addTaskDiv.appendChild(selectList);
     const taskName = createElement('input', 'task-name', '');
     taskName.placeholder = "Type your name for the task here..."
+    taskName.maxLength = 18;
     addTaskDiv.appendChild(taskName);
-    const taskDesc = createElement('input', 'task-desc', '');
-    taskDesc.placeholder = "Type your description for the task here..."
+    const taskDesc = createElement('textarea', 'task-desc', '');
+    taskDesc.placeholder = "Type your description for the task here...";
     addTaskDiv.appendChild(taskDesc);
     const taskDate = createElement('input', 'task-date', '');
     taskDate.type = 'date';
-    taskDate.value = '2022-12-11';
+    const t = new Date();
+    taskDate.value = `${t.getFullYear()}-${t.getMonth()+1}-${t.getDate()}`;
     addTaskDiv.appendChild(taskDate);
     const taskPrioDiv = createElement('form', 'task-prio', '');
     addTaskDiv.appendChild(taskPrioDiv);
@@ -67,7 +92,6 @@ export default () =>
     {
         let prio = taskPrioHigh.checked ? taskPrioHigh.value : taskPrioMed.checked ? taskPrioMed.value : taskPrioLow.value;
         let task = addTask(allLists[selectList.value], taskName.value, taskDesc.value, taskDate.value, prio);
-        console.log(task)
         if(task)
         {
             const listContainer = document.getElementById('list');
@@ -80,16 +104,6 @@ export default () =>
     {
         expandWithAni(document.body, addTaskDiv, 'popIn');
         expandWithAni(document.body, screenCover, 'opIn');
-        for(const list of selectList.childNodes)
-            selectList.removeChild(list);
-        const allLists = getAllLists();
-        allLists.forEach((list, index) => 
-        {
-            const op = createElement('option', '', list, 'option');
-            op.value = '' + index;
-            selectList.appendChild(op);
-        });
-    
     });
     screenCover.addEventListener('click', (e) => 
     {
