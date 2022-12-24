@@ -2,10 +2,11 @@
 {
     font-size: 7vmin;
     text-align: center;
-    color: var(--sec);
+    color: var(--lightShade);
     padding: .5vh 0vw;
     height: 10%;
-    border-bottom: 2px solid var(--third);
+    text-shadow: -1px 5px 7px var(--shadow);
+
 }
 #list
 {
@@ -18,7 +19,6 @@
     padding: 2vh 1vw;
     gap: 1.25vh;
     overflow: auto;
-    color: var(--sec);
 }
 .task
 {
@@ -27,17 +27,13 @@
     justify-content: space-between;
     align-items: center;
     min-height: 7vh;
-    background-color: var(--fourth);
+    background-color: var(--lightShade);
     padding: .5vh .5vw;
-    color: inherit;
+    color: var(--darkShade);
     border-radius: 5px;
-    border: 1px solid var(--third);
+    height: 7vh;
     box-shadow: 1px 1px 5px 1px var(--shadow);
     transition: height .3s ease;
-}
-.task:hover
-{
-    transform: translate3d(2px, 2px, 2px);
 }
 .editable
 {
@@ -57,6 +53,7 @@
     display: grid;
     height: 100%;
     grid-template-columns: repeat(3, 1fr);
+    gap: .1vw;
     align-items: stretch;
     width: 9vw;
 }
@@ -74,8 +71,9 @@
 #check
 {
     appearance: none;
-    border: 1px solid var(--third);
-    color: var(--dom);
+    border: 1px solid var(--darkAccent);
+    background-color: var(--lightAccent);
+    color: var(--darkAccent);
     opacity: 0;
 }
 #check::before
@@ -84,13 +82,15 @@
 }
 #check:checked
 {
-    background-color: var(--third);
+    background-color: var(--darkAccent);
+    color: var(--lightAccent);
 }
 #edit
 {
     appearance: none;
-    border: 1px solid var(--third);
-    color: var(--dom);
+    border: 1px solid var(--darkAccent);
+    background-color: var(--lightAccent);
+    color: var(--darkAccent);
 }
 #edit::before
 {
@@ -98,19 +98,22 @@
 }
 #edit:checked
 {
-    background-color: var(--third);
+    background-color: var(--darkAccent);
+    color: var(--lightAccent);
 }
 #delete
 {
-    border: 1px solid var(--third);
-    color: var(--dom);
+    border: 1px solid var(--darkAccent);
+    background-color: var(--lightAccent);
+    color: var(--darkAccent);
     height: 100%;
     opacity: 0;
     transition: background-color .2s ease, opacity .3s ease;
 }
 #delete:hover
 {
-    background-color: var(--sec);
+    background-color: var(--darkAccent);
+    color: var(--lightAccent);
 }
 #prio:disabled
 {

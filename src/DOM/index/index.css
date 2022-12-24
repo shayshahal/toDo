@@ -1,9 +1,10 @@
 :root 
 {
-    --dom: #14D1C8;
-    --sec: #99005D;
-    --third: #009A92;
-    --fourth: #C1FCF7;
+    --lightShade: #F6F7F6;
+    --lightAccent: #9D91AE;
+    --main: #8BB1F1;
+    --darkAccent: #876A8B;
+    --darkShade: #324B8C;
     --shadow: rgba(5, 5, 5, 0.5);
 }
 @font-face 
@@ -31,8 +32,12 @@ html, body
 {
     height: 100%;
     width: 100%;
-    background-color: var(--dom);
-    color: var(--sec);
+    background: var(--darkShade);
+    color: var(--lightShade);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center
 }
 label
 {
@@ -47,7 +52,7 @@ button
     cursor: pointer;
     outline: none;
 }
-input, select,option, input:focus, select:focus
+input, select,option, input:focus, select:focus, textarea
 {
     background-color: inherit;
     border: none;
@@ -55,6 +60,8 @@ input, select,option, input:focus, select:focus
     font: inherit;
     box-shadow: none;
     outline: none;
+    cursor: default;
+    resize: none;
 }
 #screen-cover
 {

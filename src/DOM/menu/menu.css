@@ -6,24 +6,29 @@
     left: 0;
     display: flex;
     border-radius: 50%;
-    color: var(--sec);
+    color: var(--lightShade);
+    background-color: transparent;
     padding: 1vh 1vw;
     font-size: 4vmin;
+    transition: transform .2s ease;
 }
-
+#expand-menu-btn:hover
+{
+    transform: scale(1.1);
+}
 /*-------------------------Sliding Menu---------------------------------*/
 #left-menu
 {
     position: fixed;
     display: flex;
-    background-color: var(--fourth);
+    background-color: var(--main);
     flex-direction: column;
     justify-content: flex-start;
     align-items: stretch;
     top: 0%;
     left: 0%;
     height: 100%;
-    color: var(--sec);
+    color: var(--darkShade);
     width: 12vw;
     max-width: 20%;
     z-index: 999;
@@ -38,15 +43,22 @@
     gap: 1vw;
     align-items: center;
     padding: 0 1vw;
-    color: var(--sec);
+    color: var(--darkShade);
+    border-bottom: 1px double var(--darkShade);
 }
 #retract-menu-btn
 {
     font-size: 3vmin;
+    transition: transform .2s ease;
+}
+#retract-menu-btn:hover
+{
+    transform:scale(1.3)
 }
 #name-menu
 {
     font-size: 2vmin;
+    text-shadow: -1px 1px 5px var(--shadow);
 }
 #list-btn-container
 {
@@ -54,7 +66,7 @@
     flex-direction: column;
     align-items: stretch;
     justify-content: flex-start;
-    color: var(--sec);
+    color: var(--darkShade);
 }
 #lists-container
 {
@@ -63,23 +75,38 @@
     justify-content: flex-start;
     align-items: stretch;
     font-size: 1.5vmin;
-    color: var(--sec);
+    color: var(--lightShade);
 }
 .listItem
 {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--darkShade);
+    border-bottom: 1px double var(--lightShade);
     padding: 1vh .2vw;
-    border-top: .05vh solid var(--third);
+    width: 100%;
+}
+.listBtn
+{
+    width: 90%;
+    text-align: center;
+}
+.listRemove
+{
+    width: 10%;
+    color: var(--lightShade);
 }
 .menu-btn
 {
-    border-top: .1vh solid var(--third);
     padding: 1.5vh 0vw;
     font-size: 2.5vmin;
     transition: all .2s ease;
+    border-bottom: 1px double var(--darkShade);
 }
 .menu-btn:hover
 {
-    color: var(--third);
+    color: var(--lightShade);
     font-size: 3vmin;
 }
 #list-creator-form
@@ -87,20 +114,30 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
-    padding: 0vh .5vw;
+    align-items: stretch;
+    color: var(--lightShade);
+    width: 100%;
+    padding: .25vh .25vw;
+
 }
 #list-creator-form input
 {
-    background-color: transparent;
-    border: 1px solid var(--sec);
+    background-color: var(--darkShade);
     padding: .2vh .2vw;
+    width: 90%;
+}
+#list-creator-form input::placeholder
+{
+    color:inherit;
 }
 #list-creator-form button
 {
-    background-color: transparent;
-    font-weight: 900;
-    font-size: 3vmin;
+    background-color: var(--darkShade);
+    color: var(--lightShade);
+    font-weight: 600;
+    font-size: 2vmin;
+    width: 10%;
+
 }
 /* Animations */
 .slideRight
