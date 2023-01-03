@@ -1,6 +1,8 @@
 import './menu.css';
 import {tabSwitch, createElement, expandWithAni,retractAnimation, removeAfterAni} from '../domManipulator';
 import {getAllLists, addList, removeList} from '../../Logic/user';
+import github from './github.png';
+
 export default () =>
 {
     // Create Menu expending button
@@ -18,9 +20,10 @@ export default () =>
     const retractMenuButton = createElement('button', 'retract-menu-btn', '☰');
     topDivLeftMenu.appendChild(retractMenuButton);
 
-    // Name of site
-    const credit = createElement('div', 'name-menu', '©Shay Shahal');
-    topDivLeftMenu.appendChild(credit);
+    const logoDiv = createElement('a', 'logo-div', '');
+    logoDiv.href = 'https://github.com/shayshahal/toDo/';
+    logoDiv.target = '_blank';
+    topDivLeftMenu.appendChild(logoDiv);
 
     // Create screen cover for rest of main screen when menu is open
     const screenCover = createElement('div', 'screen-cover', '');
